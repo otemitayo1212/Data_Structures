@@ -1,0 +1,17 @@
+Matching documents:
+
+Title: Sports Illustrated
+URL: html_files/subdir1/file3.html
+Description: "Celtics Hire Former Knicks Coach - Sports Illustrated
+Snippet: Remembering Pearl Harbor: No moment in the history of the United States casts a longer shadow than Pearl Harbor. “Reme
+
+Title: Ellis Island Foundation
+URL: html_files/subdir1/subdir2/subdir3/subdir4/file13.html
+Description: "Liberty 135 | Statue of Liberty & Ellis Island
+Snippet: 
+
+Title: National Geographic Kids
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file18.html
+Description: "Statue of Liberty
+Snippet: 
+

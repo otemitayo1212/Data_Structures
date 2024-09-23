@@ -1,0 +1,22 @@
+Matching documents:
+
+Title: Apple
+URL: html_files/subdir1/subdir2/subdir3/subdir4/file12.html
+Description: "CNN: Breaking US & World News 12+ - App Store
+Snippet: 
+
+Title: Boston.com
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/file24.html
+Description: "Boston.com: Local breaking news, sports, weather, and things ...
+Snippet: 
+
+Title: The Vogue
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/subdir10/file26.html
+Description: "Maroon 5
+Snippet: 
+
+Title: Google Play
+URL: html_files/subdir1/subdir2/subdir3/subdir5/file14.html
+Description: "CNN Breaking US & World News - Apps on Google Play
+Snippet: 
+

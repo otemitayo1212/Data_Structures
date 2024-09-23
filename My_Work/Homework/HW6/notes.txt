@@ -1,0 +1,189 @@
+g++ -o prog practice.cpp
+g++ -std=c++11 practice2.cpp -o prog 
+./prog
+g++ -std=c++11 -o prog wordsearch.cpp main.cpp
+
+// crate a code that builds the perfect puzzle 
+
+bool WordSearch::tryDifferentDirection(int index) { // how do i addres forbidden words
+    if (index == words.size()) {
+        // All words have been placed successfully
+        if (isBoardCompleteAndValid()) {
+            // Check for forbidden words
+            for (const std::string& forbiddenWord : banned_words) {
+                if (findWord(forbiddenWord)) {
+                    return false; // Forbidden word found, we want to remove it 
+                }
+            }
+            
+            // Check for blank spots
+            if (!isBoardFilled()) {
+                return false; // Blank spots found, return false
+            }
+            
+            // If the board is complete, valid, and has no forbidden words or blank spots, add it to the boards vector
+            boards.push_back(board);
+            return true; // Successfully found a solution
+        } else {
+            return false; // Board is not complete and valid, return false
+        }
+    }
+
+    std::string currentWord = words[index]; // Get the current word
+    std::pair<int, int> lastWordPosition = word_positions[index]; // Get the position where the last word was placed
+    int row = lastWordPosition.first;
+    int col = lastWordPosition.second;
+    bool placed = false;
+
+    // Get the direction of the current word
+    std::pair<int, int> currentDirection = getDirectionOfWord(currentWord, row, col);
+
+    // Try placing the last word in a different direction
+    for (const std::pair<int, int>& direction : directions) {
+        int dr = direction.first;
+        int dc = direction.second;
+
+        // Skip the current direction
+        if (direction == currentDirection) {
+            continue;
+        }
+
+        // Check if the word can be placed in the current direction
+        if (canPlaceWord(currentWord, row, col, dr, dc)) {
+            removeWord(currentWord, row, col);
+            placeWord(currentWord, row, col, dr, dc); // Place the last word in a different direction
+            placed = true;
+
+            // Recursively try placing the next word
+            if (tryDifferentDirection(index + 1)) {
+                return true; // Solution found
+            }
+        }
+    }
+
+    // If the word couldn't be placed in any direction, try the previous word in a different direction
+    if (!placed && index > 0) {
+        // Remove the last word from the board
+        std::pair<int, int> removedDirection = removeWord(currentWord, row, col);
+
+        // Recursively try different directions for the previous word
+        if (tryDifferentDirection(index - 1)) {
+            return true; // Solution found
+        }
+    }
+
+    return false; // No solution found
+}
+
+
+
+How to use the main
+
+#include "wordsearch.h" // Include the header file for the WordSearch class
+#include <iostream>
+#include <vector>
+#include <string>
+
+int main() {
+    // Sample data for the WordSearch class
+    int rows = 5;
+    int cols = 5;
+    std::vector<std::string> words = {"HELLO", "WORLD", "OPENAI"};
+    std::vector<std::string> banned_words = {"GOODBYE", "HELLO"};
+
+    // Create an instance of the WordSearch class
+    WordSearch word_search(rows, cols, words, banned_words);
+
+    // Perform operations on the WordSearch object
+    // For example:
+    std::cout << "Finding words in the word search...\n";
+    for (const auto& word : words) {
+        if (word_search.findWord(word)) {
+            std::cout << "Found word: " << word << std::endl;
+        } else {
+            std::cout << "Word not found: " << word << std::endl;
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+void WordSearch::insert_words(int wordIndex) {
+    if (wordIndex >= words.size()) {
+        std::cout<<"HERE"<<std::endl;
+        // Base case: All words have been inserted
+        fillBlankSpots(); // Fill in blank spots with random letters
+        if (!containsForbiddenWords() && isBoardFilled()) {
+            // If no forbidden words and the board is filled, add it to the solutions
+            boards.push_back(board);
+            // Try different directions to generate different solutions
+            bool results = tryDifferentDirection(words.size());
+            while (results) {
+                // Generate more solutions by trying different directions
+                results = tryDifferentDirection(words.size());
+            }
+        }
+        return;
+    }
+
+    const std::string& word = words[wordIndex];
+    int directionCounter = 0; // Counter for directions tried for the current word
+    for (int row = 0; row < rows; ++row) {
+        for (int col = 0; col < cols; ++col) {
+            for (const std::pair<int, int>& direction : directions) {
+                int dr = direction.first;
+                int dc = direction.second;
+                if (canPlaceWord(word, row, col, dr, dc)) {
+                    // If the word can be placed, place it and move to the next word
+                    placeWord(word, row, col, dr, dc);
+                    insert_words(wordIndex + 1); // Recursively insert the next word
+                    return; // No need to explore other directions for this word
+                } else {
+                    // If the word cannot be placed in this direction, try the next one
+                    directionCounter++;
+                    if (directionCounter == 8) {
+                        // If all 8 directions have been tried, backtrack
+                        if (wordIndex > 0) {
+                            const std::string& prev_word = words[wordIndex - 1];
+                            std::pair<int, int> removedDirection = removeWord(prev_word, row, col);
+                            // Now loop through and try to find a different direction from the removed word direction
+                            for (const std::pair<int, int>& dir : directions) {
+                                int removedDr = removedDirection.first;
+                                int removedDc = removedDirection.second;
+                                if (dir != removedDirection && dir != std::make_pair(-removedDr, -removedDc)) {
+                                    // Try placing the previous word in a different direction
+                                    if (canPlaceWord(prev_word, row, col, dir.first, dir.second)) {
+                                        placeWord(prev_word, row, col, dir.first, dir.second);
+                                        // Recursively insert the current word again
+                                        insert_words(wordIndex);
+                                        return; // No need to explore other directions for this word
+                                    }
+                                }
+                            }
+                        }
+                        directionCounter = 0; // Reset direction counter
+                        // Try a different direction for the previous word
+                    }
+                }
+            }
+        }
+    }
+}
+
+ // Print out the generated boards
+    for (int i = 0; i < boards.size(); ++i) {
+        std::cout << "Board " << i+1 << ":\n";
+        for (const auto& row : boards[i]) {
+            for (char cell : row) {
+                std::cout << cell << " ";
+            }
+            std::cout << "\n";
+        }
+        std::cout << "\n";
+    }
+
+
+    // Your code logic here...

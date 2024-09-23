@@ -1,0 +1,18 @@
+Loop through the json file and create an object 
+Put these objects in a B+ Tree
+Use Range search to search for the products in the price range . 
+For all products that fall into that price range, sort them based on the rating in a descending order - products with a higher rating being displayed first. 
+If there is a tie, break the tie by prices - products with a lower price being displayed first. If there is still a tie, i.e. two products have the same rating, and have the same price, break the tie by comparing the title of the products, i.e., apply the less than operator (<) to the two titles - both are std::strings, the product whose title is less than the title of the other product should be displayed first.’
+
+
+
+For sorting 
+        if (rating != other.rating)
+            return rating > other.rating;
+        if (price != other.price)
+            return price < other.price;
+        return title < other.title;
+
+
+
+

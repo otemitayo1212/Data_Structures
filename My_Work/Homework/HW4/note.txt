@@ -1,0 +1,2 @@
+clang++ BusinessData.cpp Test.cpp -o prog   
+./prog large_input1.json output.txt 93101 Shopping   

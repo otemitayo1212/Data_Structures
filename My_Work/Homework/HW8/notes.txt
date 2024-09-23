@@ -1,0 +1,1 @@
+g++ -std=c++17 prac.cpp Comment.cpp  -o prog 

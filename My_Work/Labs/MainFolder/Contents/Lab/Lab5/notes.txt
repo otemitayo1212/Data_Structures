@@ -1,0 +1,41 @@
+vec.h code
+template <class T> int remove_matching_elements(Vec<T>& vec, const T& element){
+  int count = 0;
+  for (int i = 0 ; i < vec.size() ; i++){
+    if (vec[i] == element) {
+            count++;
+            vec.erase(vec.begin() + i);
+            i--;
+      } 
+  }
+  return count;
+
+}
+
+
+testing code in .cpp
+std::cout << remove_matching_elements(v1, 100)<< std::endl; (should return 10)
+
+
+
+
+
+
+oid print() const {
+        std::cout << "Capacity: " << m_capacity << ", Size: " << m_size << ", Data: ";
+        for (size_t i = 0; i < m_size; ++i) {
+            std::cout << m_data[i] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+
+g++ -o myprogram test_vec.cpp
+./myprogram                  
+
+
+
+   for (int i = 0; i < m_size; ++i) {
+            std::cout << m_data[i] << " ";
+        }
+        std::cout << std::endl;

@@ -1,0 +1,148 @@
+CP2
+int count_paths_recursive(const std::vector<std::vector<GRID_STATUS>>& blocked_grid, int x, int y) {
+    int rows = blocked_grid.size();
+    int cols = blocked_grid[0].size();
+
+    // Base case: if the current position is out of bounds or blocked, return 0.
+    if (x >= rows || y >= cols || blocked_grid[x][y] == GRID_BLOCKED) {
+        return 0;
+    }
+
+    // Base case: if the current position is the destination, return 1.
+    if (x == rows - 1 && y == cols - 1) {
+        return 1;
+    }
+
+    // Recursive case: move right and move down.
+    return count_paths_recursive(blocked_grid, x + 1, y) + count_paths_recursive(blocked_grid, x, y + 1);
+}
+CP1 // FIGURE OUT YOUR SELF
+
+
+CP3 
+
+
+#include <fstream>
+#include <iostream>
+#include <vector>
+#include <stack>
+
+class Point {
+public:
+    Point(int x0, int y0) : x(x0), y(y0) {}
+    int x, y;
+};
+
+enum GRID_STATUS { GRID_CLEAR, GRID_BLOCKED, GRID_PATH };
+
+void read_grid(std::istream& istr,
+               std::vector<std::vector<GRID_STATUS> >& blocked_grid,
+               int& start_x, int& start_y) {
+    int x, y;
+    int max_x = 0, max_y = 0;
+    while ((istr >> x >> y) && ! (x==0 && y==0)) {
+        blocked_grid.resize(std::max(max_x, x) + 1, std::vector<GRID_STATUS>(std::max(max_y, y) + 1, GRID_CLEAR));
+        blocked_grid[x][y] = GRID_BLOCKED;
+        if (x > max_x) max_x = x;
+        if (y > max_y) max_y = y;
+    }
+
+    istr >> start_x >> start_y;
+}
+
+bool find_path_recursive(std::vector<std::vector<GRID_STATUS>>& blocked_grid, int x, int y, std::stack<Point>& path) {
+    int rows = blocked_grid.size();
+    int cols = blocked_grid[0].size();
+
+    // Base case: if the current position is out of bounds or blocked, return false.
+    if (x >= rows || y >= cols || blocked_grid[x][y] == GRID_BLOCKED) {
+        return false;
+    }
+
+    // Add current point to the path.
+    path.push(Point(x, y));
+
+    // Base case: if the current position is the origin, return true.
+    if (x == 0 && y == 0) {
+        return true;
+    }
+
+    // Recursive case: move up and move left.
+    if (find_path_recursive(blocked_grid, x - 1, y, path) || find_path_recursive(blocked_grid, x, y - 1, path)) {
+        blocked_grid[x][y] = GRID_PATH;
+        return true;
+    }
+
+    // If no path found, backtrack and remove current point from the path.
+    path.pop();
+    return false;
+}
+
+void print_grid(const std::vector<std::vector<GRID_STATUS>>& blocked_grid, unsigned int start_x, unsigned int start_y, const std::stack<Point>& path) {
+    std::cout << "Here is the grid with the origin in the upper left corner, x increasing \n"
+              << "horizontally and y increasing down the screen.  An 'X' represents a blocked\n"
+              << "location, 'S' represents the starting location, and '$' represents the path.\n\n";
+
+    for (unsigned int y = 0; y < blocked_grid[0].size(); ++y) {
+        for (unsigned int x = 0; x < blocked_grid.size(); ++x) {
+            if (x == start_x && y == start_y)
+                std::cout << " S";
+            else if (x == 0 && y == 0)
+                std::cout << " O";
+            else if (blocked_grid[x][y] == GRID_BLOCKED)
+                std::cout << " X";
+            else if (!path.empty() && path.top().x == x && path.top().y == y) {
+                std::cout << " $";
+                path.pop();
+            } else
+                std::cout << " .";
+        }
+        std::cout << std::endl;
+    }
+}
+
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " grid-file" << std::endl;;
+        return 1;
+    }
+    std::ifstream istr(argv[1]);
+    if (!istr) {
+        std::cerr << "Could not open " << argv[1] << std::endl;
+        return 1;
+    }
+
+    std::vector<std::vector<GRID_STATUS> > blocked_grid;
+    int start_x, start_y;
+    read_grid(istr, blocked_grid, start_x, start_y);
+
+    std::stack<Point> path;
+    find_path_recursive(blocked_grid, start_x, start_y, path);
+
+    print_grid(blocked_grid, start_x, start_y, path);
+
+    return 0;
+}
+
+
+
+When x == 0 and y == 0, there is only one possible path back to the origin. This is because if you're already at the origin, there's only one way to stay at the origin, which is not moving at all.
+
+When x == 2 and y == 1, we're at a position where we need to make two steps to the left and one step downwards to reach the origin. We can represent the movements as follows:
+
+Move left, left, down
+Move left, down, left
+Move down, left, left
+When x == 2 and y == 2, we're at a position where we need to make two steps to the left and two steps downwards to reach the origin. There are more possible paths now:
+
+Move left, left, down, down
+Move left, down, left, down
+Move left, down, down, left
+Move down, left, left, down
+Move down, left, down, left
+Move down, down, left, left
+The pattern is that at each step, you have two choices: move left or move down. Therefore, to find the total number of paths from a given position (x, y) back to the origin, you can recursively sum the number of paths from the positions (x-1, y) (moving left) and (x, y-1) (moving down). This is the essence of the recursive function in the provided code.
+
+
+
+

@@ -1,0 +1,63 @@
+Matching documents:
+
+Title: Adele Performs Hometown Glory
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/subdir10/subdir11/subdir12/subdir13/file32.html
+Description: "Hometown Glory
+Snippet: 2024 Grammy Awards: The full list of winners.
+Taylor Swift, Miley Cyrus, Victoria Monét and Billie Eilish were among th
+
+Title: Bleacher Report
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file17.html
+Description: "Boston Celtics - NBA
+Snippet: 
+
+Title: Skylar White
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/subdir10/subdir11/subdir12/file31.html
+Description: "Breaking Bad
+Snippet: LOS ANGELES (AP) — Taylor Swift won album of the year at the Grammy Awards for “Midnights,” breaking the record fo
+
+Title: GRAMMY.com
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file19.html
+Description: "Lady Gaga | Artist
+Snippet: 
+
+Title: Youtube
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/file21.html
+Description: "Maroon 5
+Snippet: Throughout his career he has won four Grammy Awards, two People’s Choice Awards and 13 CMA Awards. He also was inducte
+
+Title: Wikipedia
+URL: html_files/file2.html
+Description: "Tom and Jerry
+Snippet: 
+
+Title: The Vogue
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/subdir10/file26.html
+Description: "Maroon 5
+Snippet: 
+
+Title: ESPN
+URL: html_files/subdir1/subdir2/file4.html
+Description: "Boston Celtics 2023-24 NBA Roster
+Snippet: 
+
+Title: National Geographic Kids
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file18.html
+Description: "Statue of Liberty
+Snippet: 
+
+Title: Maroon 5
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/file22.html
+Description: "Maroon 5: Home
+Snippet: 
+
+Title: Apple Music
+URL: html_files/subdir1/subdir2/subdir3/subdir5/file15.html
+Description: "Lady Gaga
+Snippet: 
+
+Title: Google Play
+URL: html_files/subdir1/subdir2/subdir3/subdir5/file14.html
+Description: "CNN Breaking US & World News - Apps on Google Play
+Snippet: 
+

@@ -1,0 +1,30 @@
+Part 1:
+
+Constructing the Phonebook: The construction of the phonebook involves initializing a vector of size 10,000 with "UNASSIGNED" strings. This operation has a time complexity of O(N), where N is the size of the vector.
+
+Adding a Number-Name Pair: Adding a number-name pair involves accessing a specific index in the vector and updating its value. Since accessing an element in a vector by index has a time complexity of O(1), the add function has a time complexity of O(1).
+
+Identifying a Caller: Identifying a caller also involves accessing a specific index in the vector and comparing its value with "UNASSIGNED". Thus, the identify function has a time complexity of O(1).
+
+Memory Usage: The memory used by the program is proportional to the size of the phonebook vector, which is O(N), where N is the largest possible phone number.
+
+Extending to 7- or 10-Digit Numbers: If extended to 7- or 10-digit numbers, the vector approach would become impractical due to the enormous memory consumption. It would not work efficiently on a cell phone due to memory constraints.
+
+Part 2:
+
+Using Maps: By using maps, we can store only the numbers that are assigned, reducing memory consumption significantly. The cost of creating the map would be O(n), where n is the number of assigned phone numbers. Both the add and identify functions would have a time complexity of O(log n), where n is the number of assigned phone numbers.
+
+Comparison with Vector Version: The map version is better in terms of memory efficiency, especially when dealing with sparse data (i.e., when there are fewer assigned phone numbers compared to the total possible numbers). However, the vector version may be faster in terms of lookup time for small datasets or when the dataset is mostly filled. Additionally, the map version provides automatic sorting based on the keys, which can be beneficial in some cases.
+
+
+
+
+Initialization: It initializes an empty map countMap which will store the count of occurrences of each integer in the sequence.
+
+Counting Occurrences: It iterates through each integer in the sequence vector and updates the count of occurrences of each integer in the countMap.
+
+Finding Maximum Frequency: It then finds the maximum frequency among all the counts stored in the countMap.
+
+Finding Modes: It iterates through the countMap again, and for each entry, if the count is equal to the maximum frequency found earlier, it adds the corresponding integer to the modes vector.
+
+Returning Modes: Finally, it returns the modes vector containing all the integers that have the maximum frequency, i.e., the modes of the input sequence.

@@ -1,0 +1,175 @@
+Problem 1:
+To ensure that the sum of elements on every level of the tree is the same, we can construct a binary tree where each level has the same number of nodes and the values are arranged in such a way that they create equal sums on each level. Here's a visualization:
+
+markdown
+
+        7
+      /   \
+     4     3
+    / \   / \
+   1   6 5   2
+
+
+
+
+Problem 2:
+For a balanced binary search tree with 7 color words ordered alphabetically, we can construct a tree as follows:
+Black   Blue   Brown   Gold   Green   Red   White
+
+
+      Gold
+    /    \
+  Blue   Red
+  /  \          /  \
+ Black Brown Green  White
+
+
+Problem 3:
+For the word "uncopyrightable", an exactly balanced binary search tree would look like this: line alphabetically and start at the center
+ a b c   e  g h i   l   n o p  r   t u y
+             l
+            / \
+            e   r
+           / \  / \
+          b  h o  u
+          /\ /\ /\ /\
+         a b g i n p t y
+
+         pre-oreder treversal :  l, e, b, a, b, h, g, r, o, i, n, p, u, t, y 
+
+
+
+Problem 4:
+To construct a tree where a post-order traversal spells the word "uncopyrightable", we'll arrange the letters accordingly:
+
+css
+Copy code
+               u
+           /     \
+          n       y
+        /   \    /  \
+       c     o  t    e
+      / \   /      /  
+     g   r h     a   
+        / \     / \  
+       p   i   b   l 
+                \
+                 e
+
+These should cover the solutions to all the provided problems. Let me know if you need further clarification or assistance!
+
+
+
+
+
+
+Check point 2 
+
+To implement a non-recursive version of the find function in the ds_set class, we need to modify the existing find function to use an iterative approach instead of recursion. Here's the updated code:
+
+template <class T>
+class ds_set {
+public:
+  // other member functions...
+
+  // FIND
+  iterator find(const T& key_value) {
+    TreeNode<T>* current = root_;
+    while (current != nullptr) {
+      if (key_value < current->value)
+        current = current->left;
+      else if (current->value < key_value)
+        current = current->right;
+      else
+        return iterator(current); // Element found
+    }
+    return end(); // Element not found
+  }
+
+  // other member functions...
+};
+
+In a binary search tree, the time complexity of the find operation depends on the height of the tree. In the worst-case scenario, the tree is unbalanced, and the height of the tree is equal to the number of nodes in the tree (n). In the best-case scenario, the tree is balanced, and the height of the tree is approximately log(n) base 2.
+
+For the non-recursive find function:
+
+Best-case time complexity: O(log n)
+Worst-case time complexity: O(n)
+Here's why:
+
+Best-case scenario (balanced tree):
+In a balanced binary search tree, each level of the tree approximately halves the search space. Therefore, the time complexity of finding an element in a balanced tree is logarithmic with respect to the number of nodes in the tree. In the non-recursive find function, each iteration of the loop reduces the search space by moving to either the left or right child of the current node, effectively halving the search space at each step.
+
+Worst-case scenario (unbalanced tree):
+If the binary search tree is unbalanced, the time complexity of finding an element can degrade to linear time. In the worst-case scenario, where the tree resembles a linked list, each iteration of the loop in the non-recursive find function traverses one level deeper into the tree, leading to a linear traversal. This worst-case scenario occurs when the tree is heavily skewed to one side.
+
+Therefore, while the non-recursive find function provides efficient search operations for balanced trees (with a time complexity of O(log n)), it may exhibit suboptimal performance for heavily unbalanced trees, with a time complexity of O(n).
+
+
+For the recursive find function in the ds_set class, the time complexity is also dependent on the height of the binary search tree. Let's analyze its time complexity:
+
+In a binary search tree:
+
+Best-case time complexity: O(log n)
+Worst-case time complexity: O(n)
+Here's why:
+
+Best-case scenario (balanced tree):
+In a balanced binary search tree, each recursive call effectively halves the search space by traversing either the left or right subtree. As a result, the time complexity of finding an element in a balanced tree is logarithmic with respect to the number of nodes in the tree. Therefore, in the best-case scenario, the time complexity of the recursive find function is O(log n).
+
+Worst-case scenario (unbalanced tree):
+If the binary search tree is unbalanced, the recursive find function may need to traverse all the nodes in the tree to find the desired element. In the worst-case scenario, where the tree resembles a linked list, each recursive call traverses one level deeper into the tree until reaching the leaf node, leading to a linear traversal. Therefore, in the worst-case scenario, the time complexity of the recursive find function is O(n).
+
+It's important to note that the recursive find function may incur additional overhead due to function call overhead and the use of the call stack. In practice, for well-balanced trees, the recursive approach can be efficient. However, for heavily unbalanced trees, it may lead to stack overflow errors or poor performance compared to non-recursive approaches. In such cases, iterative solutions, like the non-recursive find function, may be preferable.
+
+
+
+
+
+Check Point 3 
+To complete the copy_tree function in the ds_set class, we need to recursively copy the elements of the source tree to create a deep copy of the tree. Here's how we can implement it:
+
+This function takes a pointer to the root of the original tree and recursively copies each node, creating a new node with the same value and linking its left and right children recursively. It returns a pointer to the root of the new copied tree.
+
+
+
+template <class T>
+TreeNode<T>* ds_set<T>::copy_tree(TreeNode<T>* old_root) {
+    if (old_root == nullptr)
+        return nullptr;
+
+    // Create a new node with the same value as the old node
+    TreeNode<T>* new_root = new TreeNode<T>(old_root->value);
+    
+    // Recursively copy the left and right subtrees
+    new_root->left = copy_tree(old_root->left);
+    new_root->right = copy_tree(old_root->right);
+    
+    return new_root;
+}
+
+int main() {
+    // Build a set
+    ds_set<std::string> set1;
+    
+    // Insert elements into the set
+    set1.insert("hello");
+    set1.insert("good-bye");
+    set1.insert("friend");
+    set1.insert("abc");
+    set1.insert("puppy");
+    set1.insert("zebra");
+    set1.insert("daddy");
+    set1.insert("puppy"); // Testing duplicate insertion
+
+    // Visualize the original set
+    std::cout << "Original set:\n" << set1 << std::endl;
+
+    // Create a copy of the set using the copy constructor
+    ds_set<std::string> set2(set1);
+
+    // Visualize the copied set
+    std::cout << "\nCopied set:\n" << set2 << std::endl;
+
+    return 0;
+}

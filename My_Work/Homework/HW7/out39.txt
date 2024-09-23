@@ -1,0 +1,67 @@
+Matching documents:
+
+Title: Bleacher Report
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file17.html
+Description: "Boston Celtics - NBA
+Snippet: That film, also distributed by Searchlight, won four Academy Awards in total, including production and costume design. �
+
+Title: Wikipedia
+URL: html_files/file2.html
+Description: "Tom and Jerry
+Snippet: [1] During this time, they won seven Academy Awards for Best Animated Short Film, tying for first place with Walt Disney
+
+Title: ESPN
+URL: html_files/subdir1/subdir2/file4.html
+Description: "Boston Celtics 2023-24 NBA Roster
+Snippet: Harrison Ford presents 'Everything Everywhere All at Once' with the Oscar for Best Picture WINNER
+    Yet “Everything 
+
+Title: Youtube
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/file21.html
+Description: "Maroon 5
+Snippet: 
+
+Title: Google Play
+URL: html_files/subdir1/subdir2/subdir3/subdir5/file14.html
+Description: "CNN Breaking US & World News - Apps on Google Play
+Snippet: Always there for each other!!”
+
+Emma Stone hugs Michelle Yeoh
+Emma Stone hugs Michelle Yeoh at the Academy Awards on S
+
+Title: Apple Music
+URL: html_files/subdir1/subdir2/subdir3/subdir5/file15.html
+Description: "Lady Gaga
+Snippet: "
+Lady Gaga attends the 95th Annual Academy Awards on March 12, 2023, Dylan Mulvaney attends the 2023 Streamy Awards at 
+
+Title: GRAMMY.com
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file19.html
+Description: "Lady Gaga | Artist
+Snippet: 
+
+Title: Adele Performs Hometown Glory
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/subdir10/subdir11/subdir12/subdir13/file32.html
+Description: "Hometown Glory
+Snippet: 
+
+Title: Skylar White
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/subdir10/subdir11/subdir12/file31.html
+Description: "Breaking Bad
+Snippet: 
+
+Title: Maroon 5
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/file22.html
+Description: "Maroon 5: Home
+Snippet: 
+
+Title: National Geographic Kids
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file18.html
+Description: "Statue of Liberty
+Snippet: ” Those were the first words of Emma Stone’s acceptance speech upon winning Best Actress at Sunday night’s Academy
+
+Title: The Vogue
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/subdir10/file26.html
+Description: "Maroon 5
+Snippet: 
+

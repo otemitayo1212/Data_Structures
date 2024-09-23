@@ -1,0 +1,79 @@
+Matching documents:
+
+Title: Expedia
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/file20.html
+Description: "Top Hotels in Troy, NY from $55
+Snippet: Listen to Someone Like You - Single by Adele on Apple Music. 2011. 2 Songs. Duration: 9 minutes.
+
+“Someone Like You”
+
+Title: Adele Performs Hometown Glory
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/subdir10/subdir11/subdir12/subdir13/file32.html
+Description: "Hometown Glory
+Snippet: Someone Like You Lyrics: I heard that you're settled down / That you found a girl and you're married now / I heard that 
+
+Title: Youtube
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/file21.html
+Description: "Maroon 5
+Snippet: Adele ‘Someone Like You’
+Singer finally releases second video from smash hit record
+
+BY ROLLING STONE
+
+I'd hoped you
+
+Title: Boston.com
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/file24.html
+Description: "Boston.com: Local breaking news, sports, weather, and things ...
+Snippet: 
+
+Title: Boston University
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/file25.html
+Description: "Boston University: Homepage
+Snippet: 
+
+Title: Bleacher Report
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file17.html
+Description: "Boston Celtics - NBA
+Snippet: 
+
+Title: Maroon 5
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/file22.html
+Description: "Maroon 5: Home
+Snippet: 
+
+Title: GRAMMY.com
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file19.html
+Description: "Lady Gaga | Artist
+Snippet: 
+
+Title: Google Play
+URL: html_files/subdir1/subdir2/subdir3/subdir5/file14.html
+Description: "CNN Breaking US & World News - Apps on Google Play
+Snippet: 
+
+Title: Instagram
+URL: html_files/subdir1/subdir2/file5.html
+Description: "Lady Gaga (@ladygaga) • Instagram photos and videos
+Snippet: 
+
+Title: National Geographic Kids
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file18.html
+Description: "Statue of Liberty
+Snippet: 
+
+Title: StatueOfLibertyTickets.com
+URL: html_files/subdir1/subdir2/file6.html
+Description: "Statue of Liberty Tickets, Ellis Island Tickets, Statue of Liberty...
+Snippet: 
+
+Title: Skylar White
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/subdir10/subdir11/subdir12/file31.html
+Description: "Breaking Bad
+Snippet: 
+
+Title: Apple Music
+URL: html_files/subdir1/subdir2/subdir3/subdir5/file15.html
+Description: "Lady Gaga
+Snippet: 
+

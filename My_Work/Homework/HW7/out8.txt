@@ -1,0 +1,35 @@
+Matching documents:
+
+Title: Ellis Island Foundation
+URL: html_files/subdir1/subdir2/subdir3/subdir4/file13.html
+Description: "Liberty 135 | Statue of Liberty & Ellis Island
+Snippet: Since 1982, The Statue of Liberty-Ellis Island Foundation has partnered with the 
+National Park Service to care for one 
+
+Title: Sports Illustrated
+URL: html_files/subdir1/file3.html
+Description: "Celtics Hire Former Knicks Coach - Sports Illustrated
+Snippet: 
+
+Title: Instagram
+URL: html_files/subdir1/subdir2/file5.html
+Description: "Lady Gaga (@ladygaga) • Instagram photos and videos
+Snippet: 
+
+Title: StatueOfLibertyTickets.com
+URL: html_files/subdir1/subdir2/file6.html
+Description: "Statue of Liberty Tickets, Ellis Island Tickets, Statue of Liberty...
+Snippet: Visit the Statue of Liberty National Monument and Ellis Island Immigration Museum. Ferry
+service to both Liberty and Ell
+
+Title: National Geographic Kids
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/file18.html
+Description: "Statue of Liberty
+Snippet: On July 4, 1884 France presented the United States with an incredible birthday gift: the
+Statue of Liberty! Without its 
+
+Title: The New York Times
+URL: html_files/subdir1/subdir2/subdir3/subdir5/subdir6/subdir7/subdir8/subdir9/subdir10/file27.html
+Description: "My Impossible Mission to Find Tom Cruise
+Snippet: 
+

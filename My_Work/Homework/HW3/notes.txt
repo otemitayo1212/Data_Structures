@@ -1,0 +1,24 @@
+ g++ recommendation.cpp main.cpp -o myprogram 
+  ./myprogram movieRatings.txt showRatings.txt output.txt 0 5
+
+
+
+
+  void writeTVShowsToFile(const std::string& filename, TVShow tvShows[], int *shows_pointer, int size) {
+    std::ofstream outputFile(filename);
+    if (outputFile.is_open()){
+         outputFile <<"Prime: TV shows we think you'll like:\n";
+    }else {
+        std::cerr << "Unable to open file: " << filename << std::endl;
+    }
+     for (int i = 0; i < 100; ++i) {
+            // check if the number is in the show array
+       for (int j = 0 ; j < size;j++ ){
+            if (i == shows_pointer[j]){
+                 outputFile << tvShows[i].title << "\n";
+            }
+          }        
+        }
+        outputFile.close();
+        std::cout << "Successfully wrote TV shows to " << filename << std::endl;
+}

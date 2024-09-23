@@ -1,0 +1,333 @@
+g++ NewMain.cpp NewUser.cpp -o myprogram 
+./myprogram users_medium1.txt output.txt 307-766-3981 profile // good
+./myprogram users_medium1.txt output.txt 704-736-7388 profile // good
+./myprogram users_medium2.txt output.txt 405-855-9725 match // good
+./myprogram users_medium2.txt output.txt 405-855-9725 unmatch 595-383-2432 // good
+./myprogram users_medium2.txt output.txt 642-798-6219 block 405-855-9725 // good
+./myprogram users_medium1.txt output.txt 704-736-7388 like
+
+/*
+    // Create users
+    NewUser* user1 = new NewUser("Alice", "Female", "123456789", "Engineer", "XYZ University", 30, 40.123, -74.567, "Yes", 25, 40, 10, "Male");
+    NewUser* user2 = new NewUser("Bob", "Male", "987654321", "Doctor", "ABC College", 35, 41.234, -73.456, "No", 30, 45, 20, "Female");
+    NewUser* user3 = new NewUser("Charlie", "Male", "456789123", "Teacher", "DEF School", 40, 42.345, -72.345, "Yes", 35, 50, 30, "Female");
+
+    // Link users together
+    user1->next = user2;
+    user2->prev = user1;
+    user2->next = user3;
+    user3->prev = user2;
+
+    // Access and print user information
+    NewUser* currentUser = user1;
+    while (currentUser != nullptr) {
+        std::cout << "Name: " << currentUser->getName() << std::endl;
+        std::cout << "Gender: " << currentUser->getGender() << std::endl;
+        std::cout << "Number: " << currentUser->getNumber() << std::endl;
+        std::cout << "Profession: " << currentUser->getProfession() << std::endl;
+        std::cout << "School: " << currentUser->getSchool() << std::endl;
+        std::cout << "Age: " << currentUser->getAge() << std::endl;
+        std::cout << "Latitude: " << currentUser->getLatitude() << std::endl;
+        std::cout << "Longitude: " << currentUser->getLongitude() << std::endl;
+        std::cout << "Is Premium: " << currentUser->getIsPremium() << std::endl;
+        std::cout << "Min Age Preference: " << currentUser->getMinAgePreference() << std::endl;
+        std::cout << "Max Age Preference: " << currentUser->getMaxAgePreference() << std::endl;
+        std::cout << "Max Distance Preference: " << currentUser->getMaxDistancePreference() << std::endl;
+        std::cout << "Interested Gender: " << currentUser->getInterestedGender() << std::endl;
+        std::cout << std::endl;
+
+        // Move to the next user
+        currentUser = currentUser->next;
+    }
+
+
+
+
+    // Free memory
+    delete user1;
+    delete user2;
+    delete user3;
+    */
+
+
+   void blocked(NewUser* headUser, NewUser* user1, NewUser* user2, const std::string& outputName) {
+    
+NewUser* firstHeadUser = nullptr;
+NewUser* firstPrevUser = nullptr;
+
+// Filtering for user1
+NewUser* current = headUser;
+while (current != nullptr) {
+    // Skip if user is the other user
+    if (current->getNumber() == user2->getNumber()) {
+        current = current->next;
+        continue;
+    }
+    double currentLat = current->getLatitude();
+    double currentLon = current->getLongitude();
+
+    // Calculate distance between the current person and the first latitude/longitude
+    double distance = calculateDistance(user1->getLatitude(), user1->getLongitude(), currentLat, currentLon);
+
+    // Filtering based on user1's preferences
+    // Example preferences check:
+    if (distance <= user1->getMaxDistancePreference() && current->getAge() >= user1->getMinAgePreference() && current->getAge() <= user1->getMaxAgePreference() && (user1->getInterestedGender() == "both" || current->getGender() == user1->getInterestedGender())) {
+        // Creating a new node for filtered user
+        std::cout << "HERE" << std::endl;
+        NewUser* newCurrentUser = new NewUser(*current);
+
+        if (firstPrevUser == nullptr) {
+            firstHeadUser = newCurrentUser;
+        } else {
+            // Link the previous user to the current user
+            firstPrevUser->next = newCurrentUser;
+            newCurrentUser->prev = firstPrevUser;
+        }
+
+        // Update prevUser pointer to the current user
+        firstPrevUser = newCurrentUser;
+    }
+
+    current = current->next;
+}
+std::ofstream outputFile( outputName);
+    
+    std::cout << "Profiles shown to " << outputName << ":\n";
+    for (NewUser* current = firstHeadUser; current != nullptr; current = current->next) {
+        outputFile<< current->getName() << " " << current->getAge() << "\n";
+         if (current->getProfession() != "Undisclosed")
+        outputFile << current->getProfession() << "\n";
+        if (current->getSchool() != "Undisclosed")
+          outputFile << current->getSchool() << "\n";
+       outputFile << "\n";
+    }
+
+NewUser* SecondHeadUser = nullptr;
+NewUser* SecondPrevUser = nullptr;
+
+// Filtering based on user2's preferences
+current = headUser;
+while (current != nullptr) {
+    // Skip if user is the other user
+    if (current->getNumber() == user1->getNumber()) {
+        current = current->next;
+        continue;
+    }
+    double currentLat = current->getLatitude();
+    double currentLon = current->getLongitude();
+
+    // Calculate distance between the current person and the first latitude/longitude
+    double distance = calculateDistance(user2->getLatitude(), user2->getLongitude(), currentLat, currentLon);
+
+    // Filtering based on user1's preferences
+    // Example preferences check:
+    if (distance <= user2->getMaxDistancePreference() && current->getAge() >= user2->getMinAgePreference() && current->getAge() <= user2->getMaxAgePreference() && (user2->getInterestedGender() == "both" || current->getGender() == user2->getInterestedGender())) {
+        // Creating a new node for filtered user
+        std::cout << "HERE" << std::endl;
+        NewUser* newCurrentUser = new NewUser(*current);
+
+        if (SecondPrevUser == nullptr) {
+            SecondHeadUser = newCurrentUser;
+        } else {
+            // Link the previous user to the current user
+            SecondPrevUser->next = newCurrentUser;
+            newCurrentUser->prev = SecondPrevUser;
+        }
+
+        // Update prevUser pointer to the current user
+        SecondPrevUser = newCurrentUser;
+    }
+
+    current = current->next;
+}
+
+
+
+    // Output profiles for user1
+    
+
+     if (outputFile.is_open()) {
+        std::cout << "Profiles shown to " << outputName << ":\n";
+     }
+     if (SecondHeadUser == nullptr){
+        std::cout<<"Empty"<<std::endl;
+
+     }
+    for (NewUser* current =  SecondHeadUser; current != nullptr; current = current->next) {
+     outputFile<< current->getName() << " " << current->getAge() << "\n";
+    if (current->getProfession() != "Undisclosed")
+     outputFile << current->getProfession() << "\n";
+    if (current->getSchool() != "Undisclosed")
+    outputFile << current->getSchool() << "\n";
+    outputFile << "\n";
+    }
+    outputFile.close();
+
+    
+    // Clean up memory for user1's filtered list
+    while (firstHeadUser != nullptr) {
+        NewUser* temp = firstHeadUser;
+        firstHeadUser = firstHeadUser->next;
+        delete temp;
+    }
+    
+
+      while ( SecondHeadUser!= nullptr) {
+        NewUser* temp =  SecondHeadUser;
+         SecondHeadUser =  SecondHeadUser->next;
+        delete temp;
+    }
+    
+}
+
+
+
+
+
+// Insert sort test 
+#include <iostream>
+#include <string>
+#include <sstream>
+
+
+class NewUser {
+private:
+    std::string name;
+    std::string number;
+    NewUser* prev;
+    NewUser* next;
+
+public:
+    NewUser(const std::string& _name, const std::string& _number)
+        : name(_name), number(_number), prev(nullptr), next(nullptr) {}
+    NewUser(const NewUser& other)
+        : name(other.name), number(other.number), prev(nullptr), next(nullptr) {}
+
+
+    std::string getNumber() const {
+        return number;
+    }
+
+    std::string getName() const {
+        return name;
+    }
+
+    NewUser* getNext() const {
+        return next;
+    }
+
+    NewUser* getPrev() const {
+        return prev;
+    }
+
+    void setNext(NewUser* node) {
+        next = node;
+    }
+
+    void setPrev(NewUser* node) {
+        prev = node;
+    }
+};
+bool comparePhoneNumbers(const std::string& phoneNumber1, const std::string& phoneNumber2) {
+    std::istringstream ss1(phoneNumber1);
+    std::istringstream ss2(phoneNumber2);
+
+    std::string token1, token2;
+
+    // Extract and compare each set of numbers
+    while (std::getline(ss1, token1, '-') && std::getline(ss2, token2, '-')) {
+        int number1 = std::stoi(token1);
+        int number2 = std::stoi(token2);
+        
+        if (number1 != number2) {
+            return number1 > number2;
+        }
+    }
+
+    // If all sets of numbers are equal, the shorter phone number is considered smaller
+    return phoneNumber1 > phoneNumber2;
+}
+
+
+NewUser* insertSorted(NewUser* headUser) {
+    if (!headUser) return nullptr;
+
+    NewUser* sortedHead = nullptr;
+
+    for (NewUser* current = headUser; current != nullptr; current = current->getNext()) {
+        NewUser* newNode = new NewUser(*current);
+        newNode->setPrev(nullptr);
+        newNode->setNext(nullptr);
+
+        // Insert the first node into the sorted list
+        if (!sortedHead) {
+            sortedHead = newNode;
+        } else {
+            NewUser* prev = nullptr;
+            NewUser* sortedCurrent = sortedHead;
+
+            // Find the correct position to insert the node
+            while (sortedCurrent != nullptr && comparePhoneNumbers(newNode->getNumber(), sortedCurrent->getNumber())) {
+                prev = sortedCurrent;
+                sortedCurrent = sortedCurrent->getNext();
+            }
+
+            // Insert the node
+            if (!prev) {
+                newNode->setNext(sortedHead);
+                sortedHead->setPrev(newNode);
+                sortedHead = newNode;
+            } else {
+                prev->setNext(newNode);
+                newNode->setPrev(prev);
+                newNode->setNext(sortedCurrent);
+                if (sortedCurrent) {
+                    sortedCurrent->setPrev(newNode);
+                }
+            }
+        }
+    }
+
+    return sortedHead;
+}
+
+
+
+
+void printList(NewUser* headUser) {
+    for (NewUser* current = headUser; current != nullptr; current = current->getNext()) {
+        std::cout << "Name: " << current->getName() << ", Number: " << current->getNumber() << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+
+int main() {
+    // Create initial list
+    NewUser* head = new NewUser("Alice", "235-967-7946");
+    head->setNext(new NewUser("Bob", "328-840-8265"));
+    head->getNext()->setNext(new NewUser("Charlie", "705-620-5685"));
+    head->getNext()->getNext()->setNext(new NewUser("David", "297-871-6679"));
+    head->getNext()->getNext()->getNext()->setNext(new NewUser("Emma", "360-289-4210"));
+    head->getNext()->getNext()->getNext()->getNext()->setNext(new NewUser("Frank", "865-329-9447"));
+    head->getNext()->getNext()->getNext()->getNext()->getNext()->setNext(new NewUser("George", "711-955-9216"));
+    head->getNext()->getNext()->getNext()->getNext()->getNext()->getNext()->setNext(new NewUser("Hannah", "523-410-2504"));
+    head->getNext()->getNext()->getNext()->getNext()->getNext()->getNext()->getNext()->setNext(new NewUser("Isaac", "422-707-4087"));
+
+    // Print original list
+    std::cout << "Original list:\n";
+    printList(head);
+
+    // Sort list
+    NewUser* sortedHead = insertSorted(head);
+
+    // Print sorted list
+    std::cout << "\nSorted list:\n";
+    printList(sortedHead);
+
+    // Additional test cases
+    // Insert more users into the list
+    // Print updated list
+
+    return 0;
+}
